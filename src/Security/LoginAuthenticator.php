@@ -56,6 +56,7 @@ class LoginAuthenticator extends AbstractGuardAuthenticator
 
     public function checkCredentials($credentials, UserInterface $user)
     {
+
         return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
 
         /* Описание метода: Проверяет данные пользователя
@@ -88,7 +89,11 @@ class LoginAuthenticator extends AbstractGuardAuthenticator
         setcookie ("jwt", $jwt, $expireTime, '/',  "", $useHttps, true );
 
         return new JsonResponse([
-            'result auth' => true
+            'result' => true,
+            'params' => [
+            	'jwt' => $jwt,
+	            'expireTime' => $expireTime
+            ]
         ]);
 
         /* Описание метода: Эта функция будет вызываться при успешной авторизации (когда checkCredentials = true)

@@ -54,9 +54,9 @@ class UsersController extends AbstractController
     }
 
     /**
-     * @Route("/api/users", name="get users", methods="DELETE")
+     * @Route("/api/users", name="get users", methods="GET")
      */
-    public function getUsers()
+    public function getUsers(Request $request)
     {
         $rep  = $this->manager->getRepository(User::class);
         $user = $rep->findAll();

@@ -24,8 +24,17 @@ class JwtAuthenticator extends AbstractGuardAuthenticator
 
     public function getCredentials(Request $request)
     {
-        $cookie = $request->cookies->get("jwt");
-        $error = "Невозможно проверить сессию"; // Текст ошибки для стандартного исключения
+
+
+//	    return new JsonResponse([
+//	    	'jwt' => $request->get('jwt')
+//	    ]);
+
+	    $cookie = $request->get('jwt');
+//	    $cookie = $request->cookies->get("jwt");
+
+//	    $cookie = $request->get('jwt');
+	    $error = "Невозможно проверить сессию"; // Текст ошибки для стандартного исключения
 
         try
         {
